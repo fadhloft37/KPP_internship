@@ -29,7 +29,7 @@ void people :: run(int q){
 
 peopleCalled :: peopleCalled(int n) : people(n){
     e1=0;
-    for(int i=0;i<maax;i++){
+    for(int i=0;i<max;i++){
         queue[i]=0;
     }
 }
