@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbank_lib.a CMakeFiles/bank_lib.dir/src/people.cpp.o
+/usr/bin/ranlib libbank_lib.a
