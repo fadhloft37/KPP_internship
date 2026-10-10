@@ -1,5 +1,5 @@
-    #include <Iostream>
-    #include people.h
+    #include <iostream>
+    #include "people.h"
     using namespace std;
 
 int main(){

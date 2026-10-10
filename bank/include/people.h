@@ -1,4 +1,4 @@
-const int max= 500000;
+const int MAKS= 500000;
 
 class people{
 protected:
@@ -8,7 +8,7 @@ public:
     people(int n){
         total=n;
     }
-    virtual ~people = default;
+    virtual ~people()= default;
 
     void run(int q);
 
@@ -20,7 +20,7 @@ public:
 class peopleCalled : public people{
 private:
     int e1;
-    int queue[max];
+    int queue[MAKS];
 
 public:
     peopleCalled(int n);
