@@ -1,0 +1,3 @@
+/usr/local/bin/bank_app
+/usr/local/lib/libbank_lib.a
+/usr/local/include/antrean_bank/people.h
