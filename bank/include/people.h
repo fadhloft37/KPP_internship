@@ -10,6 +10,8 @@ public:
     }
     virtual ~people = default;
 
+    void run(int q);
+
     virtual void panggil() = 0;
     virtual void datang(int x) = 0;
     virtual int panggilLagi() = 0;
@@ -22,19 +24,6 @@ private:
 
 public:
     peopleCalled(int n);
-    void panggil() override;
-    void datang(int x) override;
-    int panggilLagi() override;
-};
-
-class peopleServed : public people{
-private:
-    int next;
-    int first;
-    int finish[max];
-
-public:
-    peopleServed(int n);
     void panggil() override;
     void datang(int x) override;
     int panggilLagi() override;
