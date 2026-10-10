@@ -1,4 +1,4 @@
-#include people.h
+#include "people.h"
 #include <iostream>
 using namespace std;
 
@@ -9,18 +9,18 @@ void people :: run(int q){
 
             switch(jenisQ){
             case 1:
-                orang.panggil();
+                panggil();
                 break;
             
             case 2:{
                 int ygmaju;
                 cin >> ygmaju;
-                orang.datang(ygmaju);
+                datang(ygmaju);
                 break;
             }
 
             case 3:
-                cout << orang.panggilLagi << endl;
+                cout << panggilLagi() << endl;
                 break;
             }
             
@@ -29,7 +29,7 @@ void people :: run(int q){
 
 peopleCalled :: peopleCalled(int n) : people(n){
     e1=0;
-    for(int i=0;i<max;i++){
+    for(int i=0;i<MAKS;i++){
         queue[i]=0;
     }
 }
