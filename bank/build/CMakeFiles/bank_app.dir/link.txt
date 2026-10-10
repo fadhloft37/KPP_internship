@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/bank_app.dir/src/main.cpp.o -o bank_app  libbank_lib.a 

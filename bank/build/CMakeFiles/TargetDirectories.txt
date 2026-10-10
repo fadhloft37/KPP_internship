@@ -1,0 +1,8 @@
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/bank_lib.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/bank_app.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/edit_cache.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/rebuild_cache.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/list_install_components.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/install.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/install/local.dir
+/home/fadhloft/internship/KPP/bank/build/CMakeFiles/install/strip.dir
