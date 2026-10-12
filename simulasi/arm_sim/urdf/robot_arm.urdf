@@ -1,0 +1,204 @@
+<robot name="Arm_fadil">
+    <link name="world"/>
+    <link name="main_body">
+        <inertial>
+            <mass value="1.0"/>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <box size="1 1 0.1"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0 0 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="1 1 0.1"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.1"/>
+        </collision>
+    </link>
+    <joint name="tatakan" type="fixed">
+        <parent link="world"/>
+        <child link="main_body"/>
+    </joint>
+
+    <link name="shoulder">
+        <inertial>
+            <mass value="0.5"/>
+            <origin rpy="0 0 0" xyz="0 0 0.5"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <box size="0.25 0.25 1"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+            <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.15" length="1"/>
+            </geometry>
+            <origin rpy="0 0 0" xyz="0 0 0.5"/>
+        </collision>
+    </link>
+    <joint name="base" type="fixed">
+        <parent link="main_body"/>
+        <child link="shoulder"/>
+    </joint>
+
+    <link name="upper_arm">
+        <inertial>
+            <mass value="0.5"/>
+            <origin rpy="1.727 0 0" xyz="0 0.25 0"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.5"/>
+            </geometry>
+            <material name="red">
+                <color rgba="1 0 0 1"/>
+            </material>
+            <origin rpy="1.727 0 0" xyz="0 0.25 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.5"/>
+            </geometry>
+            <origin rpy="1.727 0 0" xyz="0 0.25 0"/>
+        </collision>
+    </link>
+    <joint name="rotasi" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="shoulder"/>
+        <child link="upper_arm"/>
+        <origin rpy="0 0 0" xyz="0 0 1"/>
+    </joint>
+
+     <link name="forearm">
+        <inertial>
+            <mass value="0.25"/>
+            <origin rpy="0.392 0 0" xyz="0 0.2 -0.5"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder radius="0.07" length="0.95"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+            <origin rpy="0.392 0 0" xyz="0 0.2 -0.5"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.7" length="0.95"/>
+            </geometry>
+            <origin rpy="0.392 0 0" xyz="0 0.2 -0.5"/>
+        </collision>
+    </link>
+    <joint name="elbow" type="revolute">
+        <axis xyz="1 0 0"/>
+        <limit velocity="1" effort="30" upper="1.5" lower="0"/>
+        <parent link="upper_arm"/>
+        <child link="forearm"/>
+        <origin rpy="0 0 0" xyz="0 0.425 0.025"/>
+    </joint>
+
+    <link name="palm">
+        <inertial>
+            <mass value="0.25"/>
+            <origin rpy="0 1.5708 0" xyz="0 0.1 0"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder radius="0.1" length="0.25"/>
+            </geometry>
+            <material name="rede">
+                <color rgba="1 0 0 1"/>
+            </material>
+            <origin rpy="0 1.5708 0" xyz="0 0.1 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.1" length="0.25"/>
+            </geometry>
+            <origin rpy="0 1.5708 0" xyz="0 0.1 0"/>
+        </collision>
+    </link>
+    <joint name="wrist" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit velocity="1" effort="30" upper="1.5" lower="-1.5"/>
+        <parent link="forearm"/>
+        <child link="palm"/>
+        <origin rpy="0 0 0" xyz="0 0.35 -0.9"/>
+    </joint>
+
+    <link name="finger_1">
+        <inertial>
+            <mass value="0.1"/>
+            <origin rpy="1.5708 0 0.5" xyz="0 0.1 0"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder radius="0.025" length="0.25"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+            <origin rpy="1.5708 0 0.5" xyz="0 0.1 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.025" length="0.25"/>
+            </geometry>
+            <origin rpy="1.5708 0 0.5" xyz="0 0.1 0"/>
+        </collision>
+    </link>
+    <link name="finger_2">
+        <inertial>
+            <mass value="0.1"/>
+            <origin rpy="1.5708 0 -0.5" xyz="0 0.1 0"/>
+            <inertia ixx="0.0027" iyy="0.0027" izz="0.005" ixy="0" ixz="0" iyz="0"/>
+        </inertial>
+        <visual>
+            <geometry>
+                <cylinder radius="0.025" length="0.25"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+            <origin rpy="1.5708 0 -0.5" xyz="0 0.1 0"/>
+        </visual>
+        <collision>
+            <geometry>
+                <cylinder radius="0.025" length="0.25"/>
+            </geometry>
+            <origin rpy="1.5708 0 -0.5" xyz="0 0.1 0"/>
+        </collision>
+    </link>
+    <joint name="palm_F1" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit velocity="1" effort="30" upper="0" lower="-1"/>
+        <parent link="palm"/>
+        <child link="finger_1"/>
+        <origin rpy="0 0 0" xyz="0.1 0.15 0"/>
+    </joint>
+    <joint name="palm_F2" type="revolute">
+        <axis xyz="0 0 1"/>
+        <limit velocity="1" effort="30" upper="1" lower="0"/>
+        <parent link="palm"/>
+        <child link="finger_2"/>
+        <origin rpy="0 0 0" xyz="-0.1 0.15 0"/>
+    </joint>
+</robot>
