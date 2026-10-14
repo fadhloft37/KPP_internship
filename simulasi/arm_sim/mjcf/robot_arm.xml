@@ -28,8 +28,8 @@
                             <joint name="wrist" type="hinge" axis="0 0 1" range="-1.5 1.5" pos="0 -0.1 0"/>
                             <geom type="cylinder" size="0.1 0.125" rgba="1 0 0 1"  euler="0 1.5708 0"/>
 
-                            <body name="finger_1" pos="0.2 0.175 0" euler="1.5708 0 0">
-                                <joint name="palm_F1" type="hinge" axis="0 1 0" range="-1 0" pos="-0.15 0 0.15"/>
+                            <body name="finger_11" pos="0.2 0.175 0" euler="1.5708 0 0">
+                                <joint name="palm_F1" type="hinge" axis="0 1 0" range="-0.75 0" pos="-0.15 0 0.15"/>
                                 <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 -0.785398 0"/>
 
                                 <body name="finger_12" pos="0 0 -0.15">
@@ -38,8 +38,8 @@
                                 </body>
                             </body>
                             
-                            <body name="finger_2" pos="-0.2 0.175 0" euler="1.5708 0 0">
-                                <joint name="palm_F2" type="hinge" axis="0 1 0" range="0 1" pos="0.15 0 0.15"/>
+                            <body name="finger_21" pos="-0.2 0.175 0" euler="1.5708 0 0">
+                                <joint name="palm_F2" type="hinge" axis="0 1 0" range="0 0.75" pos="0.15 0 0.15"/>
                                 <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 0.785398 0"/>
 
                                 <body name="finger_22" pos="0 0 -0.15">
@@ -54,4 +54,20 @@
             </body>
         </body>
     </worldbody>
+
+    <actuator>
+        <position name="p_rotasi" joint="rotasi" kp="350" kv="50"/>
+        <position name="p_elbow" joint="elbow" kp="350" kv="50" ctrlrange="0 1.5"/>
+        <position name="p_wrist" joint="wrist" kp="70" kv="10" ctrlrange="-1.5 1.5"/>
+        <position name="p_F1" joint="palm_F1" kp="7" kv="1" ctrlrange="-0.75 0"/>
+        <position name="p_F2" joint="palm_F2" kp="7" kv="1" ctrlrange="0 0.75"/>
+    </actuator>
+
+    <sensor>
+        <jointpos name="pos_rotasi" joint="rotasi"/>
+        <jointpos name="pos_elbow" joint="elbow"/>
+        <jointpos name="pos_wrist" joint="wrist"/>
+        <jointpos name="pos_F1" joint="palm_F1"/>
+        <jointpos name="pos_F2" joint="palm_F2"/>
+    </sensor>
 </mujoco>
