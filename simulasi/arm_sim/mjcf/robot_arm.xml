@@ -1,0 +1,57 @@
+<mujoco model="Robot_arm">
+    <compiler angle="radian"/>
+    <option gravity="0 0 0"/>
+    <default>
+        <joint damping="0.5"/>
+        <geom contype="0" conaffinity="0"/>
+    </default>
+
+    <worldbody>
+        <light diffuse=".6 .6 .6" pos="0 0 5" dir="0 0 -1"/>
+        <geom type="plane" size="5 5 0.1" rgba="0 1 0 1"/>
+
+        <body name="main_body" pos="0 0 0">
+            <geom type="box" size="0.5 0.5 0.05" rgba="1 0 0 1"/>
+
+            <body name="shoulder" pos="0 0 0.5">
+                <geom type="box" size="0.125 0.125 0.5" rgba="1 1 1 1"/>
+
+                <body name="upper_arm" pos="0 0.25 0.55">
+                    <joint name="rotasi" type="hinge" axis="0 0 1" pos="0 -0.25 0"/>
+                    <geom type="cylinder" size="0.1 0.25" rgba="1 0 0 1" euler="1.8326 0 0"/>
+
+                    <body name="forearm" pos="0 0.325 -0.45">
+                        <joint name="elbow" type="hinge" axis="1 0 0" range="0 1.5" pos="0 -0.1 0.5"/>
+                        <geom type="cylinder" size="0.07 0.475" rgba="1 1 1 1" euler="0.261799 0 0"/>
+
+                        <body name="palm" pos="0 0.2 -0.35">
+                            <joint name="wrist" type="hinge" axis="0 0 1" range="-1.5 1.5" pos="0 -0.1 0"/>
+                            <geom type="cylinder" size="0.1 0.125" rgba="1 0 0 1"  euler="0 1.5708 0"/>
+
+                            <body name="finger_1" pos="0.2 0.175 0" euler="1.5708 0 0">
+                                <joint name="palm_F1" type="hinge" axis="0 1 0" range="-1 0" pos="-0.15 0 0.15"/>
+                                <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 -0.785398 0"/>
+
+                                <body name="finger_12" pos="0 0 -0.15">
+                                    <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 0.785398 0"/>
+
+                                </body>
+                            </body>
+                            
+                            <body name="finger_2" pos="-0.2 0.175 0" euler="1.5708 0 0">
+                                <joint name="palm_F2" type="hinge" axis="0 1 0" range="0 1" pos="0.15 0 0.15"/>
+                                <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 0.785398 0"/>
+
+                                <body name="finger_22" pos="0 0 -0.15">
+                                    <geom type="cylinder" size="0.025 0.125" rgba="1 1 1 1" euler="0 -0.785398 0"/>
+
+                                </body>
+
+                            </body>
+                        </body>
+                    </body>
+                </body> 
+            </body>
+        </body>
+    </worldbody>
+</mujoco>
