@@ -1,3 +1,6 @@
+#ifndef CONTROL_HPP
+#define CONTROL_HPP
+
 #include <mujoco/mujoco.h>
 #include <GLFW/glfw3.h>
 #include <cstdio>
@@ -5,7 +8,7 @@
 #include <algorithm>
 
 void changeJoint(char key, mjModel* m, mjData* d){
-    const double step = 0.1;
+    const double step = 0.05;
 
     switch(key){
         case 'D': d->ctrl[0] +=step; break; 
@@ -44,3 +47,5 @@ void sensorDetect(mjData* d, int frame){
     }
     std::printf("\n");
 }
+
+#endif

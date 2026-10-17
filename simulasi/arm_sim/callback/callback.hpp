@@ -1,3 +1,6 @@
+#ifndef CALLBACK_HPP
+#define CALLBACK_HPP
+
 #include <mujoco/mujoco.h>
 #include <GLFW/glfw3.h>
 #include <cstdio>
@@ -31,3 +34,5 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int act, int m
 void error_callback(int error, const char* desc){
     fprintf(stderr, "GLFW error %d: %s\n", error, desc);
 }
+
+#endif

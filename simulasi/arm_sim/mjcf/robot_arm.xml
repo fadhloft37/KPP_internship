@@ -56,11 +56,11 @@
     </worldbody>
 
     <actuator>
-        <position name="p_rotasi" joint="rotasi" kp="350" kv="50" ctrlrange="-3.14 3.14"/>
-        <position name="p_elbow" joint="elbow" kp="350" kv="50" ctrlrange="0 1.5"/>
-        <position name="p_wrist" joint="wrist" kp="70" kv="10" ctrlrange="-1.5 1.5"/>
-        <position name="p_F1" joint="palm_F1" kp="7" kv="1" ctrlrange="-0.75 0"/>
-        <position name="p_F2" joint="palm_F2" kp="7" kv="1" ctrlrange="0 0.75"/>
+        <position name="p_rotasi" joint="rotasi" kp="100" kv="50" ctrlrange="-3.14 3.14"/>
+        <position name="p_elbow" joint="elbow" kp="150" kv="50" ctrlrange="0 1.5"/>
+        <position name="p_wrist" joint="wrist" kp="20" kv="10" ctrlrange="-1.5 1.5"/>
+        <position name="p_F1" joint="palm_F1" kp="3" kv="1" ctrlrange="-0.75 0"/>
+        <position name="p_F2" joint="palm_F2" kp="3" kv="1" ctrlrange="0 0.75"/>
     </actuator>
 
     <sensor>
