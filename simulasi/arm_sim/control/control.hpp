@@ -1,3 +1,4 @@
+#pragma once
 #include <mujoco/mujoco.h>
 #include <GLFW/glfw3.h>
 #include <cstdio>
@@ -12,15 +13,19 @@ void changeJoint(char key, mjModel* m, mjData* d){
         case 'A': d->ctrl[0] -=step; break; 
         case 'W': d->ctrl[1] +=step; break;
         case 'S': d->ctrl[1] -=step; break;
-        case 'L': d->ctrl[2] +=step; break;
-        case 'K': d->ctrl[2] -=step; break;
-        case 'N':
-            d->ctrl[3] = 0;
-            d->ctrl[4] = 0;
+        case 'F': d->ctrl[2] +=step; break;
+        case 'J': d->ctrl[2] -=step; break;
+        case 'L': d->ctrl[3] +=step; break;
+        case 'K': d->ctrl[3] -=step; break;
+        case 'P': d->ctrl[4] +=step; break;
+        case 'O': d->ctrl[4] -=step; break;
+        case 'Q':
+            d->ctrl[5] = 0;
+            d->ctrl[6] = 0;
             break;
-        case 'M':
-            d->ctrl[3] = -0.75;
-            d->ctrl[4] = 0.75;
+        case 'E':
+            d->ctrl[5] = -0.5;
+            d->ctrl[6] = 0.5;
             break;
         case ' ':
             mj_resetData(m, d);
@@ -29,15 +34,9 @@ void changeJoint(char key, mjModel* m, mjData* d){
     }
 }
 
-void sensorDetect(mjData* d, int frame){
-    const int cetak_sensor = 1;
-
-    if (frame % cetak_sensor != 0) {
-        return;
-    }
-
-    const int n_Joint = 5;
-    const char* s_joint[n_Joint] = {"rotasi","elbow","wrist","F1","F2"};
+void sensorDetect(mjData* d){
+    const int n_Joint = 7;
+    const char* s_joint[n_Joint] = {"rotasi_z","rotasi_x","elbow","wrist","palm","F1","F2"};
 
     for(int i=0; i<n_Joint; i++){
         std::printf("%s: %.3f |", s_joint[i], d->sensordata[i]);

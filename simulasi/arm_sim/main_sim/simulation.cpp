@@ -18,7 +18,7 @@ mjrContext con;
 int main() {
     // LOAD MODEL
     char error[1000] = "Couldn't load model or data";
-    m = mj_loadXML("robot_arm.xml", nullptr, error, sizeof(error));
+    m = mj_loadXML("mjcf/robot_arm.xml", nullptr, error, sizeof(error));
     if(!m){
         std::fprintf(stderr, "%s\n", error);
         return 1;
@@ -49,7 +49,10 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
 
-    glfwSetKeyCallback(window, cb.keyboard_callback());
+    glfwSetMouseButtonCallback(window, mouse_button_callback);
+    glfwSetCursorPosCallback(window, cursor_pos_callback);
+    glfwSetScrollCallback(window, scroll_callback);
+    glfwSetKeyCallback(window, keyboard_callback);
 
     // MUJOCO VISUALIZATION 
     mjv_defaultCamera(&cam);
@@ -59,14 +62,13 @@ int main() {
 
     mjv_makeScene(m, &scn, 2000);
     mjr_makeContext(m, &con, mjFONTSCALE_150);
-    cam.distance = 4; cam.azimuth = 90; cam.elevation = -20; cam.lookat[2] = 0.6;
+    cam.distance = 6; cam.azimuth = 180; cam.elevation = -15; 
+    cam.lookat[0] = 0; cam.lookat[1] = 0.5; cam.lookat[2] = 1;
+
 
     // MAIN LOOP
-    int frame = 0;
     while(!glfwWindowShouldClose(window)){
         mj_step(m, d);
-
-        sensorDetect(d, ++frame);
 
         mjrRect viewport = {0, 0, 0, 0};
         glfwGetFramebufferSize(window, &viewport.width, &viewport.height);
