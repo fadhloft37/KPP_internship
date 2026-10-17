@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/robot_arm_sim.dir/main_sim/simulation.cpp.o  -o robot_arm_sim  -lmujoco /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so 
