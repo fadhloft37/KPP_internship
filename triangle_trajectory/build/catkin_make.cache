@@ -1,0 +1,2 @@
+triangle_arm
+-DCATKIN_DEVEL_PREFIX=/home/fadhloft/internship/KPP/triangle_trajectory/devel -DCMAKE_INSTALL_PREFIX=/home/fadhloft/internship/KPP/triangle_trajectory/install -G Unix Makefiles
