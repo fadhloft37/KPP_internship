@@ -1,0 +1,8 @@
+prefix=/home/fadhloft/internship/KPP/triangle_trajectory/install
+
+Name: triangle_arm
+Description: Description of triangle_arm
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
