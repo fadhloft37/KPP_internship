@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(triangle_arm)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -9,8 +11,12 @@ project(triangle_arm)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  roslib
   std_msgs
+  sensor_msgs
 )
+find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -203,3 +209,15 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(robot_arm_sim src/main_sim/simulation.cpp)
+
+target_include_directories(robot_arm_sim PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/control
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/callback)
+
+target_link_libraries(robot_arm_sim
+  ${catkin_LIBRARIES}
+  mujoco
+  glfw
+  OpenGL::GL)
