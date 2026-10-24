@@ -3,8 +3,10 @@
 #include <cstdio>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 #include "ros/ros.h"
+#include "std_msgs/String.h"
 #include "control.hpp"
 #include "callback.hpp"
 
@@ -16,7 +18,35 @@ mjvCamera cam;
 mjvOption opt;
 mjrContext con;
 
-int main() {
+static void modeCallback(const std_msgs::String::ConstPtr& msg){
+    if(msg->input == "manual" || msg->input == "preset"){
+        mode(msg->input);
+        ROS_INFO("Mode: %s", msg->input.c_str());
+    } else{
+        ROS_WARN("Invalid mode: %s", msg->input.c_str());
+    }
+}
+
+static void presetCallback(const std_msgs::String::ConstPtr& msg){
+    if(!preset){
+        ROS_WARN("Preset mode isn't active.");
+        return;
+    }
+    presetJoint(msg->preset, m, d);
+}
+
+static void keyCallback(const std_msgs::String::ConstPtr& msg){
+    if(!manual || msg->key == ' '){
+        ROS_WARN("Manual mode isnt active.");
+        return;
+    }
+    changeJoint(msg->key, m, d);
+}
+
+int main(int argc, char** argv){
+    ros::init(argc, argv, "simulation_node");
+    ros::NodeHandle nh;
+
     // LOAD MODEL
     char error[1000] = "Couldn't load model or data";
     m = mj_loadXML("mjcf/robot_arm.xml", nullptr, error, sizeof(error));
@@ -66,10 +96,15 @@ int main() {
     cam.distance = 6; cam.azimuth = 180; cam.elevation = -15; 
     cam.lookat[0] = 0; cam.lookat[1] = 0.5; cam.lookat[2] = 1;
 
+    ros::Subscriber mode_sub = nh.subscribe("mode_topic", 10, modeCallback);
+    ros::Subscriber preset_sub = nh.subscribe("preset_topic", 10, presetCallback);
+    ros::Subscriber key_sub = nh.subscribe("key_topic", 10, keyCallback);
 
     // MAIN LOOP
     double t_last = glfwGetTime();
     while(!glfwWindowShouldClose(window)){
+        ros::spinOnce();
+
         double t_now = glfwGetTime();
         double frame_dt = std::min(t_now - t_last, 0.05);
         t_last = t_now;
@@ -77,7 +112,7 @@ int main() {
         double t_target = d->time + frame_dt;
         while(d->time < t_target) mj_step(m, d);
 
-      updateTriangle(d);
+        updateTriangle(d);
 
         mjrRect viewport = {0, 0, 0, 0};
         glfwGetFramebufferSize(window, &viewport.width, &viewport.height);
