@@ -102,6 +102,17 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -123,17 +134,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -348,6 +348,21 @@ std_msgs_generate_messages_lisp/fast:
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
+triangle_arm/CMakeFiles/arm_user.dir/rule:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f CMakeFiles/Makefile2 triangle_arm/CMakeFiles/arm_user.dir/rule
+.PHONY : triangle_arm/CMakeFiles/arm_user.dir/rule
+
+# Convenience name for target.
+arm_user: triangle_arm/CMakeFiles/arm_user.dir/rule
+
+.PHONY : arm_user
+
+# fast build rule for target.
+arm_user/fast:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/arm_user.dir/build.make triangle_arm/CMakeFiles/arm_user.dir/build
+.PHONY : arm_user/fast
+
+# Convenience name for target.
 triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f CMakeFiles/Makefile2 triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
 .PHONY : triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
@@ -361,6 +376,21 @@ rosgraph_msgs_generate_messages_nodejs: triangle_arm/CMakeFiles/rosgraph_msgs_ge
 rosgraph_msgs_generate_messages_nodejs/fast:
 	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f CMakeFiles/Makefile2 triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+.PHONY : triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_eus: triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
+
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
 triangle_arm/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
@@ -542,21 +572,6 @@ rosgraph_msgs_generate_messages_cpp/fast:
 	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
-# Convenience name for target.
-triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f CMakeFiles/Makefile2 triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
 src/main_sim/simulation.o: src/main_sim/simulation.cpp.o
 
 .PHONY : src/main_sim/simulation.o
@@ -584,6 +599,33 @@ src/main_sim/simulation.cpp.s:
 	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/robot_arm_sim.dir/build.make triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.s
 .PHONY : src/main_sim/simulation.cpp.s
 
+src/main_sim/user.o: src/main_sim/user.cpp.o
+
+.PHONY : src/main_sim/user.o
+
+# target to build an object file
+src/main_sim/user.cpp.o:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/arm_user.dir/build.make triangle_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.o
+.PHONY : src/main_sim/user.cpp.o
+
+src/main_sim/user.i: src/main_sim/user.cpp.i
+
+.PHONY : src/main_sim/user.i
+
+# target to preprocess a source file
+src/main_sim/user.cpp.i:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/arm_user.dir/build.make triangle_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.i
+.PHONY : src/main_sim/user.cpp.i
+
+src/main_sim/user.s: src/main_sim/user.cpp.s
+
+.PHONY : src/main_sim/user.s
+
+# target to generate assembly for a file
+src/main_sim/user.cpp.s:
+	cd /home/fadhloft/internship/KPP/triangle_trajectory/build && $(MAKE) -f triangle_arm/CMakeFiles/arm_user.dir/build.make triangle_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.s
+.PHONY : src/main_sim/user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -606,7 +648,10 @@ help:
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... arm_user"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... rebuild_cache"
+	@echo "... roscpp_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
@@ -621,11 +666,12 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... test"
 	@echo "... edit_cache"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... rebuild_cache"
 	@echo "... src/main_sim/simulation.o"
 	@echo "... src/main_sim/simulation.i"
 	@echo "... src/main_sim/simulation.s"
+	@echo "... src/main_sim/user.o"
+	@echo "... src/main_sim/user.i"
+	@echo "... src/main_sim/user.s"
 .PHONY : help
 
 
