@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <cctype>
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
@@ -19,11 +20,9 @@ mjvOption opt;
 mjrContext con;
 
 static void modeCallback(const std_msgs::String::ConstPtr& msg){
-    if(msg->input == "manual" || msg->input == "preset"){
-        mode(msg->input);
-        ROS_INFO("Mode: %s", msg->input.c_str());
-    } else{
-        ROS_WARN("Invalid mode: %s", msg->input.c_str());
+    if(std::toupper(msg->data[0]) == 'M'){
+        mode(manual ? "preset" : "manual");
+        ROS_INFO("Mode: %s", manual ? "MANUAL" : "PRESET");
     }
 }
 
@@ -32,15 +31,18 @@ static void presetCallback(const std_msgs::String::ConstPtr& msg){
         ROS_WARN("Preset mode isn't active.");
         return;
     }
-    presetJoint(msg->preset, m, d);
+    presetJoint(msg->data, m, d);
+    ROS_INFO("Preset: %s", msg->data.c_str());
 }
 
 static void keyCallback(const std_msgs::String::ConstPtr& msg){
-    if(!manual || msg->key == ' '){
+    char key = std::toupper(msg->data[0]);
+    if(!manual && key != ' '){
         ROS_WARN("Manual mode isnt active.");
         return;
     }
-    changeJoint(msg->key, m, d);
+    changeJoint(key, m, d);
+    sensorDetect(d);
 }
 
 int main(int argc, char** argv){
@@ -49,7 +51,7 @@ int main(int argc, char** argv){
 
     // LOAD MODEL
     char error[1000] = "Couldn't load model or data";
-    m = mj_loadXML("mjcf/robot_arm.xml", nullptr, error, sizeof(error));
+    m = mj_loadXML("src/triangle_arm/src/mjcf/robot_arm.xml", nullptr, error, sizeof(error));
     if(!m){
         std::fprintf(stderr, "%s\n", error);
         return 1;
@@ -102,7 +104,7 @@ int main(int argc, char** argv){
 
     // MAIN LOOP
     double t_last = glfwGetTime();
-    while(!glfwWindowShouldClose(window)){
+    while(!glfwWindowShouldClose(window) && ros::ok()){
         ros::spinOnce();
 
         double t_now = glfwGetTime();
