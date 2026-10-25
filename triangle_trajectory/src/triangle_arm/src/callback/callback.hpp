@@ -12,6 +12,9 @@ extern mjData* d;
 extern mjvScene scn;
 extern mjvCamera cam;
 
+extern int manual;
+extern int preset;
+
 static bool  button_left = false, button_middle = false, button_right = false;
 static double lastx = 0, lasty = 0;
 
