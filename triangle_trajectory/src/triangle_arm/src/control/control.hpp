@@ -7,11 +7,13 @@
 #include <algorithm>
 #include <string>
 
+// Initialize global variables
 const int n_joint = 7;
 int manual = 1, preset = 0;
 int step_triangle = 0;
 const double step = 0.1;
 
+// Function to set mode
 void mode(std::string mode){
     if(mode == "manual"){
         manual = 1;
@@ -23,6 +25,7 @@ void mode(std::string mode){
 
 }
 
+// Funtion to change joint positions based on key input
 void changeJoint(char key, mjModel* m, mjData* d){
     if(key == ' '){
         mj_resetData(m, d);
@@ -54,6 +57,7 @@ void changeJoint(char key, mjModel* m, mjData* d){
     }
 }
 
+// Function to set the change for each joint position for preset mode
 void setPose(mjData* d, double z, double x, double elbow, double wrist, double palm, double F1, double F2){
     d->ctrl[0] = z;
     d->ctrl[1] = x;
@@ -64,12 +68,14 @@ void setPose(mjData* d, double z, double x, double elbow, double wrist, double p
     d->ctrl[6] = F2;
 }
 
+// Function to set joint for each step of triangle trajectory
 void trianglePose(mjData* d){
     d->ctrl[0] = (step_triangle == 1) ? 0.7854 : 0;
     d->ctrl[2] = (step_triangle == 2) ? 0.7854 : 0;
     d->ctrl[4] = (step_triangle == 2) ? -1.5708 : -0.7854;
 }
 
+// Function to set joint positions for each preset available
 void presetJoint(std::string model, mjModel* m, mjData* d){
     if(!preset) return;
     step_triangle = 0;
@@ -84,22 +90,24 @@ void presetJoint(std::string model, mjModel* m, mjData* d){
     }
 }
 
+// Funtion to track the triangle trajectory and update the step accrdingly
 void updateTriangle(mjData* d){
-    if(step_triangle == 0) return;      // triangle tidak sedang jalan
+    if(step_triangle == 0) return;      // triangle trajectory not started
 
     bool sampai = std::fabs(d->sensordata[0] - d->ctrl[0]) < 0.05
                && std::fabs(d->sensordata[2] - d->ctrl[2]) < 0.05
                && std::fabs(d->sensordata[4] - d->ctrl[4]) < 0.05;
-    if(!sampai) return;                 // belum sampai, tunggu
+    if(!sampai) return;                 // not reached target yet
 
     step_triangle++;
     if(step_triangle > 3){
-        step_triangle = 0;              // semua langkah selesai
+        step_triangle = 0;              // reset the step if triangle is completed
     } else {
-        trianglePose(d);              // kirim target langkah berikutnya
+        trianglePose(d);              // call the trianglePose function to set the next step
     }
 }
 
+// Function to detect and print the sensor data
 void sensorDetect(mjData* d){
     const int n_Joint = 7;
     const char* s_joint[n_Joint] = {"rotasi_z","rotasi_x","elbow","wrist","palm","F1","F2"};

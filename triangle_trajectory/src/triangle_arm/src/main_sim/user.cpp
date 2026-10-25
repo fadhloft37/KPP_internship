@@ -5,13 +5,16 @@
 #include "std_msgs/String.h"
 
 int main(int argc, char** argv){
+    // ROS node initialization
     ros::init(argc, argv, "user_node");
     ros::NodeHandle nh;
 
+    // ROS publishers for each topics
     ros::Publisher mode_pub = nh.advertise<std_msgs::String>("mode_topic", 10);
     ros::Publisher preset_pub = nh.advertise<std_msgs::String>("preset_topic", 10);
     ros::Publisher key_pub = nh.advertise<std_msgs::String>("key_topic", 10);
 
+    // Main loop
     while(ros::ok()){
         std::string input;
         std::cout << "Masukkan key (tekan 'H' untuk panduan): ";
@@ -20,9 +23,9 @@ int main(int argc, char** argv){
         std_msgs::String msg;
         msg.data = input;
 
-        if(input == "M" || input == "m"){
+        if(input == "M" || input == "m"){   // Mode_topic
             mode_pub.publish(msg);
-        } else if(input == " "){
+        } else if(input == " "){    // reset
             key_pub.publish(msg);
         } else if(input == "H" || input == "h"){
             std::cout << "Panduan:\n";
@@ -39,10 +42,10 @@ int main(int argc, char** argv){
             std::cout << "    1: Pindah ke posisi 'home'\n";
             std::cout << "    2: Pindah ke posisi 'ready'\n";
             std::cout << "    3: Pose segitiga 'triangle'\n";
-        }else if(input == "1" || input == "2" || input == "3"){
+        }else if(input == "1" || input == "2" || input == "3"){ // Preset_topic
             msg.data = (input == "1") ? "home" : (input == "2") ? "ready" : "triangle";
             preset_pub.publish(msg);
-        } else{
+        } else{     // Key_topic
             key_pub.publish(msg);
         }
     }

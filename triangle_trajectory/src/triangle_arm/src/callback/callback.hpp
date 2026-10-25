@@ -7,6 +7,7 @@
 
 #include "control.hpp"
 
+// Global variables that declared in another file
 extern mjModel* m;
 extern mjData* d;
 extern mjvScene scn;
@@ -18,6 +19,7 @@ extern int preset;
 static bool  button_left = false, button_middle = false, button_right = false;
 static double lastx = 0, lasty = 0;
 
+// Callback function for keyboard input
 void keyboard_callback(GLFWwindow* window, int key, int scancode, int act, int mods){
   if(act == GLFW_RELEASE){
       sensorDetect(d);
@@ -62,7 +64,7 @@ static void error_callback(int error, const char* desc){
     fprintf(stderr, "GLFW error %d: %s\n", error, desc);
 }
 
-// --- Mouse button: remember which buttons are down ---
+// Callback function for mouse button input
 static void mouse_button_callback(GLFWwindow* window, int button, int act, int /*mods*/) {
   // Simple, stable button state handling
   if (button == GLFW_MOUSE_BUTTON_LEFT)   button_left   = (act == GLFW_PRESS) ? true : (act == GLFW_RELEASE ? false : button_left);
@@ -73,7 +75,7 @@ static void mouse_button_callback(GLFWwindow* window, int button, int act, int /
   glfwGetCursorPos(window, &lastx, &lasty);
 }
 
-// --- Mouse move: convert motion to camera action ---
+// Callback function for mouse movement
 static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos) {
   if (!m) return;
   // If no mouse button is pressed, just update last position
@@ -105,7 +107,7 @@ static void cursor_pos_callback(GLFWwindow* window, double xpos, double ypos) {
   }
 }
 
-// --- Scroll wheel zoom ---
+// Callback function for scroll wheel zoom
 static void scroll_callback(GLFWwindow* window, double /*xoffset*/, double yoffset) {
   if (!m) return;
   // Scroll to zoom (gentle factor)
