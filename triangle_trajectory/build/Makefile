@@ -441,6 +441,19 @@ std_msgs_generate_messages_lisp/fast:
 .PHONY : std_msgs_generate_messages_lisp/fast
 
 #=============================================================================
+# Target rules for targets named arm_user
+
+# Build rule for target.
+arm_user: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 arm_user
+.PHONY : arm_user
+
+# fast build rule for target.
+arm_user/fast:
+	$(MAKE) -f triangle_arm/CMakeFiles/arm_user.dir/build.make triangle_arm/CMakeFiles/arm_user.dir/build
+.PHONY : arm_user/fast
+
+#=============================================================================
 # Target rules for targets named rosgraph_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -452,6 +465,19 @@ rosgraph_msgs_generate_messages_nodejs: cmake_check_build_system
 rosgraph_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named roscpp_generate_messages_eus
+
+# Build rule for target.
+roscpp_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
+.PHONY : roscpp_generate_messages_eus
+
+# fast build rule for target.
+roscpp_generate_messages_eus/fast:
+	$(MAKE) -f triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
+.PHONY : roscpp_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named sensor_msgs_generate_messages_eus
@@ -609,19 +635,6 @@ rosgraph_msgs_generate_messages_cpp/fast:
 	$(MAKE) -f triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make triangle_arm/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
-#=============================================================================
-# Target rules for targets named roscpp_generate_messages_eus
-
-# Build rule for target.
-roscpp_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 roscpp_generate_messages_eus
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	$(MAKE) -f triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build.make triangle_arm/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -656,7 +669,9 @@ help:
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... arm_user"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_eus"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
@@ -669,7 +684,6 @@ help:
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_eus"
 .PHONY : help
 
 

@@ -22,6 +22,7 @@ triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ro
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/message.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/message_event.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/message_forward.h
+triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/message_operations.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/message_traits.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/names.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/node_handle.h
@@ -59,6 +60,7 @@ triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ro
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/wall_timer.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/ros/wall_timer_options.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/rosconsole/macros_generated.h
+triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/std_msgs/String.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 triangle_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 

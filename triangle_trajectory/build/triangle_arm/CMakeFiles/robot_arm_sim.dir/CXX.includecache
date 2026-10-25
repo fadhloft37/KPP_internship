@@ -47,8 +47,14 @@ vector
 -
 algorithm
 -
+string
+-
+cctype
+-
 ros/ros.h
 /home/fadhloft/internship/KPP/triangle_trajectory/src/triangle_arm/src/main_sim/ros/ros.h
+std_msgs/String.h
+/home/fadhloft/internship/KPP/triangle_trajectory/src/triangle_arm/src/main_sim/std_msgs/String.h
 control.hpp
 /home/fadhloft/internship/KPP/triangle_trajectory/src/triangle_arm/src/main_sim/control.hpp
 callback.hpp
@@ -262,6 +268,10 @@ boost/make_shared.hpp
 cstddef
 -
 memory
+-
+
+/opt/ros/noetic/include/ros/message_operations.h
+ostream
 -
 
 /opt/ros/noetic/include/ros/message_traits.h
@@ -699,6 +709,22 @@ ros/forwards.h
 /opt/ros/noetic/include/ros/ros/forwards.h
 
 /opt/ros/noetic/include/rosconsole/macros_generated.h
+
+/opt/ros/noetic/include/std_msgs/String.h
+string
+-
+vector
+-
+memory
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
 
 /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 ros/macros.h

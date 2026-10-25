@@ -9,7 +9,6 @@
 # modified environment variables
 export CMAKE_PREFIX_PATH="/home/fadhloft/internship/KPP/triangle_trajectory/devel:$CMAKE_PREFIX_PATH"
 export LD_LIBRARY_PATH="/home/fadhloft/internship/KPP/triangle_trajectory/devel/lib:$LD_LIBRARY_PATH"
-export PATH='/opt/ros/noetic/bin:/home/fadhloft/.local/bin:/home/fadhloft/.local/share/../bin:/home/fadhloft/.atuin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 export PKG_CONFIG_PATH="/home/fadhloft/internship/KPP/triangle_trajectory/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/fadhloft/internship/KPP/triangle_trajectory/build'
 export ROSLISP_PACKAGE_DIRECTORIES='/home/fadhloft/internship/KPP/triangle_trajectory/devel/share/common-lisp'

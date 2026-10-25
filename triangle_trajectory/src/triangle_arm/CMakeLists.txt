@@ -211,6 +211,14 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(robot_arm_sim src/main_sim/simulation.cpp)
+target_link_libraries(robot_arm_sim ${catkin_LIBRARIES})
+
+
+add_executable(arm_user src/main_sim/user.cpp)
+target_link_libraries(arm_user ${catkin_LIBRARIES})
+
+add_dependencies(robot_arm_sim ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(arm_user ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 target_include_directories(robot_arm_sim PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src/control
