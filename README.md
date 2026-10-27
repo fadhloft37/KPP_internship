@@ -15,3 +15,9 @@ di kasus tersebut terdapat 3 event:
 2. run dengan ./ban_app
 3. program bisa di install ke sistem
 
+# Simulasi Robot Arm
+
+# Triangle Trajectory with ROS
+
+
+
