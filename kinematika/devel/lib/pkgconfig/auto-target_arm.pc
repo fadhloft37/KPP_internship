@@ -1,0 +1,8 @@
+prefix=/home/fadhloft/internship/KPP/kinematika/devel
+
+Name: auto-target_arm
+Description: Description of auto-target_arm
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
