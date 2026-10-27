@@ -1,5 +1,5 @@
 <mujoco model="Robot_arm">
-    <compiler angle="radian"/>
+    <compiler angle="degree"/>
     <option gravity="0 0 0"/>
     <default>
         <joint damping="0.5"/>
@@ -20,44 +20,44 @@
                     <joint name="rotasi_z" type="hinge" axis="0 0 1"/>
                     <geom type="sphere" size="0.2" rgba="0.5 0.5 0.5 1"/>
                   
-                    <body name="shoulder" pos="0 0.2 0">
-                        <joint name="rotasi_x" type="hinge" axis="1 0 0" range="0 3.14" pos="0 -0.2 0"/>
+                    <body name="shoulder" pos="0 0.2 0" euler="0 90 0">
+                        <joint name="rotasi_x" type="hinge" axis="0 0 1" range="0 180" pos="0 -0.2 0"/>
                         <geom type="box" size="0.1 0.1 0.1" rgba="0.5 0.5 0.5 1"/>
 
                         <body name="upper_arm" pos="0 0.35 0">
-                            <geom type="box" size="0.1 0.05 0.35" rgba="1 1 1 1" euler="1.5708 0 0"/>
+                            <geom type="box" size="0.05 0.35 0.1" rgba="1 1 1 1"/>
 
                             <body name="elbow" pos="0 0.35 0">
-                                <joint name="elbow" type="hinge" axis="1 0 0" range="0 3.14" pos="0 0 0"/>
-                                <geom type="cylinder" size="0.1 0.125" rgba="0.5 0.5 0.5 1" euler="0 1.5708 0"/>
+                                <joint name="elbow" type="hinge" axis="0 0 1" range="0 180" pos="0 0 0"/>
+                                <geom type="cylinder" size="0.1 0.125" rgba="0.5 0.5 0.5 1"/>
 
-                                <body name="forearm" pos="0 0 -0.55">
-                                    <geom type="box" size="0.1 0.05 0.55" rgba="1 1 1 1"/>
+                                <body name="forearm" pos="0.55 0 0">
+                                    <geom type="box" size="0.55 0.055 0.1" rgba="1 1 1 1"/>
 
-                                    <body name="wrist" pos="0 0 -0.5">
-                                        <joint name="wrist" type="hinge" axis="0 0 1" range="-1.57 1.57" pos="0 0 0"/>
-                                        <geom type="cylinder" size="0.125 0.1" rgba="0.5 0.5 0.5 1" euler="0 1.5708 0"/>
+                                    <body name="wrist" pos="0.55 0 0" euler="0 -90 0">
+                                        <joint name="wrist" type="hinge" axis="0 0 1" range="-90 90"/>
+                                        <geom type="cylinder" size="0.125 0.1" rgba="0.5 0.5 0.5 1"/>
                             
-                                        <body name="palm" pos="0 0 0">
-                                            <joint name="palm" type="hinge" axis="1 0 0" range="-3.14 0" pos="0 0 0"/>
-                                            <geom type="cylinder" size="0.075 0.15" rgba="1 1 1 1" euler="0 1.5708 0"/>
+                                        <body name="palm" euler="0 90 0">
+                                            <joint name="palm" type="hinge" axis="0 0 1" range="-180 0"/>
+                                            <geom type="cylinder" size="0.075 0.15" rgba="1 1 1 1"/>
 
-                                            <body name="finger_11" pos="0.2 0.2 0" euler="1.5708 0 0">
-                                                <joint name="F1" type="hinge" axis="0 1 0" range="-0.5 0" pos="-0.15 0 0.15"/>
-                                                <geom type="box" size="0.025 0.05 0.15" rgba="1 1 1 1" euler="0 -0.5236 0"/>
+                                            <body name="finger_11" pos="0 0.2 0.2" euler="0 90 0">
+                                                <joint name="F1" type="hinge" axis="0 0 1" range="0 30" pos="0.1 -0.15 0"/>
+                                                <geom type="box" size="0.025 0.15 0.05" rgba="1 1 1 1" euler="0 0 30"/>
 
-                                                <body name="finger_12" pos="0 0 -0.225">
-                                                    <geom type="box" size="0.025 0.05 0.15" rgba="1 1 1 1" euler="0 0.5236 0"/>
+                                                <body name="finger_12" pos="0 0.255 0">
+                                                    <geom type="box" size="0.025 0.15 0.05" rgba="1 1 1 1" euler="0 0 -30"/>
 
                                                 </body>
                                             </body>
                                 
-                                            <body name="finger_21" pos="-0.2 0.2 0" euler="1.5708 0 0">
-                                                <joint name="F2" type="hinge" axis="0 1 0" range="0 0.5" pos="0.15 0 0.15"/>
-                                                <geom type="box" size="0.025 0.05 0.15" rgba="1 1 1 1" euler="0 0.5236 0"/>
+                                            <body name="finger_21" pos="0 0.2 -0.2" euler="0 90 0">
+                                                <joint name="F2" type="hinge" axis="0 0 1" range="-30 0" pos="-0.1 -0.15 0"/>
+                                                <geom type="box" size="0.025 0.15 0.05" rgba="1 1 1 1" euler="0 0 -30"/>
 
-                                                <body name="finger_22" pos="0 0 -0.225">
-                                                    <geom type="box" size="0.025 0.05 0.15" rgba="1 1 1 1" euler="0 -0.5236 0"/>
+                                                <body name="finger_22" pos="0 0.255 0">
+                                                    <geom type="box" size="0.025 0.15 0.05" rgba="1 1 1 1" euler="0 0 30"/>
 
                                                 </body>
 
