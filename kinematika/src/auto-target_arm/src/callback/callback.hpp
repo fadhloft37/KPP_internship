@@ -35,6 +35,14 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int act, int m
     return;
   }
 
+  if(key == GLFW_KEY_Q){
+    if(act == GLFW_PRESS) changeJoint('Q', m, d);
+    return;
+  } else if(key == GLFW_KEY_E){
+    if(act == GLFW_PRESS) changeJoint('E', m, d);
+    return;
+  }
+
   if(manual){
     switch(key){
       case GLFW_KEY_D: changeJoint('D', m, d); break;
@@ -47,8 +55,6 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int act, int m
       case GLFW_KEY_K: changeJoint('K', m, d); break;
       case GLFW_KEY_P: changeJoint('P', m, d); break;
       case GLFW_KEY_O: changeJoint('O', m, d); break;
-      case GLFW_KEY_Q: changeJoint('Q', m, d); break;
-      case GLFW_KEY_E: changeJoint('E', m, d); break;
     }
   } else{
     if(act != GLFW_PRESS) return;
@@ -56,6 +62,7 @@ void keyboard_callback(GLFWwindow* window, int key, int scancode, int act, int m
       case GLFW_KEY_1: presetJoint("home", m, d); break;
       case GLFW_KEY_2: presetJoint("ready", m, d); break;
       case GLFW_KEY_3: presetJoint("triangle", m, d); break;
+      case GLFW_KEY_4: presetJoint("custom", m, d); break;
     }
   }
 }
