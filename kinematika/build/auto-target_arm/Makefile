@@ -183,6 +183,21 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+auto-target_arm/CMakeFiles/robot_arm_sim.dir/rule:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f CMakeFiles/Makefile2 auto-target_arm/CMakeFiles/robot_arm_sim.dir/rule
+.PHONY : auto-target_arm/CMakeFiles/robot_arm_sim.dir/rule
+
+# Convenience name for target.
+robot_arm_sim: auto-target_arm/CMakeFiles/robot_arm_sim.dir/rule
+
+.PHONY : robot_arm_sim
+
+# fast build rule for target.
+robot_arm_sim/fast:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/robot_arm_sim.dir/build.make auto-target_arm/CMakeFiles/robot_arm_sim.dir/build
+.PHONY : robot_arm_sim/fast
+
+# Convenience name for target.
 auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f CMakeFiles/Makefile2 auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
 .PHONY : auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
@@ -196,6 +211,21 @@ std_msgs_generate_messages_nodejs: auto-target_arm/CMakeFiles/std_msgs_generate_
 std_msgs_generate_messages_nodejs/fast:
 	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+auto-target_arm/CMakeFiles/arm_user.dir/rule:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f CMakeFiles/Makefile2 auto-target_arm/CMakeFiles/arm_user.dir/rule
+.PHONY : auto-target_arm/CMakeFiles/arm_user.dir/rule
+
+# Convenience name for target.
+arm_user: auto-target_arm/CMakeFiles/arm_user.dir/rule
+
+.PHONY : arm_user
+
+# fast build rule for target.
+arm_user/fast:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/arm_user.dir/build.make auto-target_arm/CMakeFiles/arm_user.dir/build
+.PHONY : arm_user/fast
 
 # Convenience name for target.
 auto-target_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
@@ -407,6 +437,60 @@ rosgraph_msgs_generate_messages_py/fast:
 	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make auto-target_arm/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
 
+src/main_sim/simulation.o: src/main_sim/simulation.cpp.o
+
+.PHONY : src/main_sim/simulation.o
+
+# target to build an object file
+src/main_sim/simulation.cpp.o:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/robot_arm_sim.dir/build.make auto-target_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o
+.PHONY : src/main_sim/simulation.cpp.o
+
+src/main_sim/simulation.i: src/main_sim/simulation.cpp.i
+
+.PHONY : src/main_sim/simulation.i
+
+# target to preprocess a source file
+src/main_sim/simulation.cpp.i:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/robot_arm_sim.dir/build.make auto-target_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.i
+.PHONY : src/main_sim/simulation.cpp.i
+
+src/main_sim/simulation.s: src/main_sim/simulation.cpp.s
+
+.PHONY : src/main_sim/simulation.s
+
+# target to generate assembly for a file
+src/main_sim/simulation.cpp.s:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/robot_arm_sim.dir/build.make auto-target_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.s
+.PHONY : src/main_sim/simulation.cpp.s
+
+src/main_sim/user.o: src/main_sim/user.cpp.o
+
+.PHONY : src/main_sim/user.o
+
+# target to build an object file
+src/main_sim/user.cpp.o:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/arm_user.dir/build.make auto-target_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.o
+.PHONY : src/main_sim/user.cpp.o
+
+src/main_sim/user.i: src/main_sim/user.cpp.i
+
+.PHONY : src/main_sim/user.i
+
+# target to preprocess a source file
+src/main_sim/user.cpp.i:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/arm_user.dir/build.make auto-target_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.i
+.PHONY : src/main_sim/user.cpp.i
+
+src/main_sim/user.s: src/main_sim/user.cpp.s
+
+.PHONY : src/main_sim/user.s
+
+# target to generate assembly for a file
+src/main_sim/user.cpp.s:
+	cd /home/fadhloft/internship/KPP/kinematika/build && $(MAKE) -f auto-target_arm/CMakeFiles/arm_user.dir/build.make auto-target_arm/CMakeFiles/arm_user.dir/src/main_sim/user.cpp.s
+.PHONY : src/main_sim/user.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -418,8 +502,10 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... robot_arm_sim"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... list_install_components"
+	@echo "... arm_user"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
@@ -436,6 +522,12 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
+	@echo "... src/main_sim/simulation.o"
+	@echo "... src/main_sim/simulation.i"
+	@echo "... src/main_sim/simulation.s"
+	@echo "... src/main_sim/user.o"
+	@echo "... src/main_sim/user.i"
+	@echo "... src/main_sim/user.s"
 .PHONY : help
 
 
