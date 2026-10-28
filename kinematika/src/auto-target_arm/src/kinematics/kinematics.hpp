@@ -7,7 +7,7 @@ using namespace Eigen;
 using namespace std;
 
 struct DH{
-    double a, alpha, d, theta
+    double a, alpha, d, theta;
 };
 
 Matrix4d TM(double a, double alpha, double d, double theta){
@@ -53,7 +53,7 @@ bool IK(const vector<DH>& dh, const VectorXd& target, VectorXd& q){
     for(int i=0; i<10000; i++){
         Vector3d error = target - position(dh, q);
 
-        if(e.norm() < 0.00001){
+        if(error.norm() < 0.00001){
             return true;
         }
 
@@ -64,5 +64,5 @@ bool IK(const vector<DH>& dh, const VectorXd& target, VectorXd& q){
         q += scale*dq;
     }
 
-    return (target - position(dh, q).norm() < 0.00001);
+    return (target - position(dh, q)).norm() < 0.00001;
 }

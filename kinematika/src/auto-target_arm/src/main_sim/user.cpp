@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
@@ -13,6 +14,7 @@ int main(int argc, char** argv){
     ros::Publisher mode_pub = nh.advertise<std_msgs::String>("mode_topic", 10);
     ros::Publisher preset_pub = nh.advertise<std_msgs::String>("preset_topic", 10);
     ros::Publisher key_pub = nh.advertise<std_msgs::String>("key_topic", 10);
+    ros::Publisher custom_pub = nh.advertise<std_msgs::String>("custom_topic", 10);
 
     // Main loop
     while(ros::ok()){
@@ -42,9 +44,31 @@ int main(int argc, char** argv){
             std::cout << "    1: Pindah ke posisi 'home'\n";
             std::cout << "    2: Pindah ke posisi 'ready'\n";
             std::cout << "    3: Pose segitiga 'triangle'\n";
-        }else if(input == "1" || input == "2" || input == "3"){ // Preset_topic
-            msg.data = (input == "1") ? "home" : (input == "2") ? "ready" : "triangle";
+            std::cout << "    4: Custom IK (masukkan target XYZ)\n";
+        }else if(input == "1" || input == "2" || input == "3" || input == "4"){ // Preset_topic
+            msg.data = (input == "1") ? "home" : (input == "2") ? "ready" : (input == "3") ? "triangle" : "custom";
             preset_pub.publish(msg);
+
+            if(input == "4"){
+                double x,y,z;
+                std::cout << "Masukkan posisi target (x y z): ";
+
+                std::string inputTarget;
+                std::getline(std::cin, inputTarget);
+                std::istringstream streamTarget(inputTarget);
+
+                if(!(streamTarget >> x >> y >> z)){
+                    std::cout << "Format target salah. Gunakan format: X Y Z";
+                    continue;
+                }
+
+                std_msgs::String msgTarget;
+                std::ostringstream output;
+                output << x << " " << y << " " << z;
+
+                msgTarget.data = output.str();
+                custom_pub.publish(msgTarget);
+            }
         } else{     // Key_topic
             key_pub.publish(msg);
         }
