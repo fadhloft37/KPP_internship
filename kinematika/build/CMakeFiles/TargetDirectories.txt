@@ -40,8 +40,10 @@
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/edit_cache.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/test.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/std_msgs_generate_messages_py.dir
+/home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/robot_arm_sim.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/list_install_components.dir
+/home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/arm_user.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/std_msgs_generate_messages_lisp.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/roscpp_generate_messages_cpp.dir
 /home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/roscpp_generate_messages_eus.dir

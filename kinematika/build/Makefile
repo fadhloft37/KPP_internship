@@ -298,6 +298,19 @@ std_msgs_generate_messages_py/fast:
 .PHONY : std_msgs_generate_messages_py/fast
 
 #=============================================================================
+# Target rules for targets named robot_arm_sim
+
+# Build rule for target.
+robot_arm_sim: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 robot_arm_sim
+.PHONY : robot_arm_sim
+
+# fast build rule for target.
+robot_arm_sim/fast:
+	$(MAKE) -f auto-target_arm/CMakeFiles/robot_arm_sim.dir/build.make auto-target_arm/CMakeFiles/robot_arm_sim.dir/build
+.PHONY : robot_arm_sim/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -309,6 +322,19 @@ std_msgs_generate_messages_nodejs: cmake_check_build_system
 std_msgs_generate_messages_nodejs/fast:
 	$(MAKE) -f auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make auto-target_arm/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
 .PHONY : std_msgs_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named arm_user
+
+# Build rule for target.
+arm_user: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 arm_user
+.PHONY : arm_user
+
+# fast build rule for target.
+arm_user/fast:
+	$(MAKE) -f auto-target_arm/CMakeFiles/arm_user.dir/build.make auto-target_arm/CMakeFiles/arm_user.dir/build
+.PHONY : arm_user/fast
 
 #=============================================================================
 # Target rules for targets named std_msgs_generate_messages_lisp
@@ -515,7 +541,9 @@ help:
 	@echo "... gtest_main"
 	@echo "... gtest"
 	@echo "... std_msgs_generate_messages_py"
+	@echo "... robot_arm_sim"
 	@echo "... std_msgs_generate_messages_nodejs"
+	@echo "... arm_user"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"

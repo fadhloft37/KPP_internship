@@ -1,0 +1,33 @@
+# The set of languages for which implicit dependencies are needed:
+set(CMAKE_DEPENDS_LANGUAGES
+  "CXX"
+  )
+# The set of files for implicit dependencies of each language:
+set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/fadhloft/internship/KPP/kinematika/src/auto-target_arm/src/main_sim/simulation.cpp" "/home/fadhloft/internship/KPP/kinematika/build/auto-target_arm/CMakeFiles/robot_arm_sim.dir/src/main_sim/simulation.cpp.o"
+  )
+set(CMAKE_CXX_COMPILER_ID "GNU")
+
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_CXX
+  "ROSCONSOLE_BACKEND_LOG4CXX"
+  "ROS_BUILD_SHARED_LIBS=1"
+  "ROS_PACKAGE_NAME=\"auto-target_arm\""
+  )
+
+# The include file search paths:
+set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "/opt/ros/noetic/include"
+  "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
+  "/usr/include/eigen3"
+  "/home/fadhloft/internship/KPP/kinematika/src/auto-target_arm/src/control"
+  "/home/fadhloft/internship/KPP/kinematika/src/auto-target_arm/src/callback"
+  "/home/fadhloft/internship/KPP/kinematika/src/auto-target_arm/src/kinematics"
+  )
+
+# Targets to which this target links.
+set(CMAKE_TARGET_LINKED_INFO_FILES
+  )
+
+# Fortran module output directory.
+set(CMAKE_Fortran_TARGET_MODULE_DIR "")
