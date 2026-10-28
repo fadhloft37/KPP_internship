@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(auto-target_arm)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
@@ -13,9 +15,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
+find_package(Eigen3 REQUIRED)
+find_package(glfw3 REQUIRED)
+find_package(OpenGL REQUIRED)
+find_package(Threads REQUIRED)
+
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -118,6 +124,8 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
+  /usr/include/eigen3
 )
 
 ## Declare a C++ library
@@ -204,3 +212,25 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(robot_arm_sim src/main_sim/simulation.cpp)
+target_link_libraries(robot_arm_sim ${catkin_LIBRARIES})
+
+
+add_executable(arm_user src/main_sim/user.cpp)
+target_link_libraries(arm_user ${catkin_LIBRARIES} Eigen3::Eigen)
+
+add_dependencies(robot_arm_sim ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(arm_user ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
+target_include_directories(robot_arm_sim PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/control
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/callback
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/kinematics
+    /usr/include/eigen3)
+
+target_link_libraries(robot_arm_sim
+  ${catkin_LIBRARIES}
+  mujoco
+  glfw
+  OpenGL::GL)

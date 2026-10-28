@@ -23,7 +23,7 @@ std::vector<DH> dh = {
     {0.9, 0, 0.0, 0},
     {0.0, -1.5708, 0.0, 0},
     {0, 1.5708, -1.1, 0}
-}
+};
 
 
 
@@ -122,7 +122,10 @@ bool customJoint(const Eigen::VectorXd& target, mjModel* m, mjData* d){
     }
 
     Eigen::VectorXd q_pos = q_current;
-    if(!IK(dh, target, q_pos)) std::printf("Diluar batas.\n"); return false;
+    if(!IK(dh, target, q_pos)){
+        std::printf("Diluar batas.\n"); 
+        return false;
+    }
 
     double F1 = d->ctrl[5], F2= d->ctrl[6];
     setPose(d, q_pos[0], q_pos[1], q_pos[2], q_pos[3], q_pos[4], F1, F2);
@@ -137,6 +140,7 @@ bool customJoint(const Eigen::VectorXd& target, mjModel* m, mjData* d){
 void presetJoint(std::string model, mjModel* m, mjData* d){
     if(!preset) return;
     step_triangle = 0;
+    custom = false;
 
     if(model == "home"){
         setPose(d, 0, 0, 0, 0, 0, 0, 0);

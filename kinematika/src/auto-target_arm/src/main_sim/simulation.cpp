@@ -5,11 +5,14 @@
 #include <algorithm>
 #include <string>
 #include <cctype>
+#include <sstream>
+#include <Eigen/Dense>
 
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "control.hpp"
 #include "callback.hpp"
+#include "kinematics.hpp"
 
 // PARAMETER MUJOCO
 mjModel* m = nullptr;
@@ -48,6 +51,28 @@ static void keyCallback(const std_msgs::String::ConstPtr& msg){
     sensorDetect(d);
 }
 
+static void customCallback(const std_msgs::String::ConstPtr& msg){
+    if(!custom){
+        ROS_WARN("Custom isn't available.");
+        return;
+    }
+
+    std::istringstream input(msg->data);
+
+    double x,y,z;
+    if(!(input >> x >> y >>z)){
+        ROS_ERROR("Format target salah. Gunakan format: X Y Z");
+        return;
+    }
+
+    Eigen::Vector3d target(x, y, z);
+    ROS_INFO("Target: x=%.3f y=%.3f z=%.3f", x,y,z);
+
+    if(customJoint(target, m, d)){
+        ROS_INFO("Target ditemukan.");
+    } else ROS_WARN("Target tidak dapat diraih.");
+}
+
 int main(int argc, char** argv){
     // ROS node initialization
     ros::init(argc, argv, "simulation_node");
@@ -55,7 +80,7 @@ int main(int argc, char** argv){
 
     // LOAD MODEL AND DATA
     char error[1000] = "Couldn't load model or data";
-    m = mj_loadXML("src/triangle_arm/src/mjcf/robot_arm.xml", nullptr, error, sizeof(error));
+    m = mj_loadXML("src/auto-target_arm/src/mjcf/robot_arm.xml", nullptr, error, sizeof(error));
     if(!m){
         std::fprintf(stderr, "%s\n", error);
         return 1;
@@ -106,6 +131,7 @@ int main(int argc, char** argv){
     ros::Subscriber mode_sub = nh.subscribe("mode_topic", 10, modeCallback);
     ros::Subscriber preset_sub = nh.subscribe("preset_topic", 10, presetCallback);
     ros::Subscriber key_sub = nh.subscribe("key_topic", 10, keyCallback);
+    ros::Subscriber custom_sub = nh.subscribe("custom_topic", 10, customCallback);
 
     // MAIN LOOP
     double t_last = glfwGetTime();      // keep track of time for simulation step
