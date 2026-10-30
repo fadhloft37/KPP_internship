@@ -1,0 +1,2 @@
+kpp_vision
+-DCATKIN_DEVEL_PREFIX=/home/fadhloft/internship/KPP/vision/devel -DCMAKE_INSTALL_PREFIX=/home/fadhloft/internship/KPP/vision/install -G Unix Makefiles
