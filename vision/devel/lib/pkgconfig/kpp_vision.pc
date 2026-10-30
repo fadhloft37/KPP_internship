@@ -1,0 +1,8 @@
+prefix=/home/fadhloft/internship/KPP/vision/devel
+
+Name: kpp_vision
+Description: Description of kpp_vision
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
