@@ -6,8 +6,6 @@ from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 from color_detection import ColorTracker, analyze_frame, build_display, COLOR_NAMES
 
-TOPIC = "/camera/image_raw"
-
 bridge = CvBridge()
 tracker = ColorTracker()
 
@@ -28,7 +26,7 @@ def report():
 
 def main():
     rospy.init_node("task2_how_colorful")
-    rospy.Subscriber(TOPIC, Image, callback, queue_size=1, buff_size=2 ** 24)
+    rospy.Subscriber("/camera/image_raw", Image, callback, queue_size=1, buff_size=2 ** 24)
     rospy.on_shutdown(report)
     rospy.spin()
  
