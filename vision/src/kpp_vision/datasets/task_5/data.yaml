@@ -1,0 +1,14 @@
+path: /home/fadhloft/internship/KPP/vision/src/kpp_vision/datasets/task_5
+train: /train/images
+val: /valid/images
+test: /test/images
+
+nc: 1
+names: ['HK']
+
+roboflow:
+  workspace: zicos-workspace
+  project: hollow-knight-3rnuv
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/zicos-workspace/hollow-knight-3rnuv/dataset/dataset
